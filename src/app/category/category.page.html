@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      دسته ها
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item [routerLink]="['/home']" *ngFor="let category of categories">
+    <ion-avatar slot="start">
+      <img [src]="category.icon">
+    </ion-avatar>
+    <ion-label>{{category.title}}</ion-label>
+  </ion-item>
+  
+</ion-content>
