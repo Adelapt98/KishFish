@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      اطلاعات کاربری
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  
+  <ion-list>
+    <form [formGroup]="user">
+      <ion-item>
+        <ion-label position="floating">نام</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="user.controls.name.invalid && user.controls.name.touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            لطفا نام خود را وارد نمایید.
+          </ion-text>
+        </ion-item>
+      <ion-item>
+        <ion-label position="floating">نام خانوادگی</ion-label>
+        <ion-input formControlName="family"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="user.controls.family.invalid && user.controls.family.touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          لطفا نام خانوادگی خود را وارد نمایید.
+        </ion-text>
+      </ion-item>
+    </form>
+    <form [formGroup]="matchingPasswordsGroup">
+      <ion-item>
+        <ion-label position="floating">رمز عبور</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="matchingPasswordsGroup.controls.password.invalid && matchingPasswordsGroup.controls.password.touched" lines="none">
+        <ion-text color="danger" class="form-error">
+          حداقل طول رمز عبور ۵ کلمه می باشد.
+        </ion-text>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">تایید رمز عبور</ion-label>
+        <ion-input formControlName="confirm_password" type="password"></ion-input>
+      </ion-item>
+      <ion-item *ngIf="matchingPasswordsGroup.controls.password.touched && matchingPasswordsGroup.hasError('areEqual')" lines="none">
+        <ion-text color="danger" class="form-error">
+          تکرار رمز عبور با رمز عبور یکسان نیست.
+        </ion-text>
+      </ion-item>
+    </form>
+    <div class="ion-padding">
+        <ion-button block color="primary" type="submit" [disabled]="user.invalid || matchingPasswordsGroup.invalid" expand="block" size="large">
+            ذخیره
+        </ion-button>
+      </div>
+    
+  </ion-list>
+</ion-content>
