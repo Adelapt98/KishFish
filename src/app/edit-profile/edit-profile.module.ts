@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-
-import { EditProfilePageRoutingModule } from './edit-profile-routing.module';
+import { RouterModule } from '@angular/router';
 
 import { EditProfilePage } from './edit-profile.page';
 
@@ -14,7 +13,12 @@ import { EditProfilePage } from './edit-profile.page';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    EditProfilePageRoutingModule
+    RouterModule.forChild([
+      {
+        path: '',
+        component: EditProfilePage
+      }
+    ])
   ],
   declarations: [EditProfilePage]
 })
