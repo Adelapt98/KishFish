@@ -1,0 +1,28 @@
+<ion-content class="ion-padding">
+
+    <div>
+      <ion-label position="floating">ورود یا ثبت نام</ion-label>
+
+    <ion-list>
+      <form [formGroup]="user">
+        <ion-item>
+          <ion-label position="floating">تلفن همراه</ion-label>
+          <ion-input formControlName="phone"></ion-input>
+        </ion-item>
+        <ion-item *ngIf="user.controls.phone.invalid && user.controls.phone.touched" lines="none">
+          <ion-text color="danger" class="form-error">
+            شماره وارده شده صحیح نیست.
+          </ion-text>
+        </ion-item>
+      </form>
+      <div class="ion-padding">
+        <ion-button block color="primary" type="submit" [disabled]="user.invalid || matchingPasswordsGroup.invalid"
+          expand="block" size="large">
+          ورود
+        </ion-button>
+      </div>
+
+    </ion-list>
+    </div>
+
+</ion-content>
